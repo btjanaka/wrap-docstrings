@@ -5,6 +5,7 @@ docstrings.
 
 ```bash
 # Install the tool globally.
+git clone https://github.com/btjanaka/wrap-docstrings
 uv tool install .
 
 # This command should now work:
