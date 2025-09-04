@@ -23,6 +23,49 @@ wrap-docstrings -
 wrap-docstrings file.py --width 88 --indent 4
 ```
 
+## Example
+
+This text:
+
+```python
+def f(x, y):
+    """Does stuff.
+
+    Args:
+        x: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure do
+        y: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure do
+
+    Returns:
+        Returns are not formatted (for now, at least).
+    """
+    return x
+```
+
+Becomes:
+
+```python
+def f(x, y):
+    """Does stuff.
+
+    Args:
+        x: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure do
+        y: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure do
+
+    Returns:
+        Returns are not formatted (for now, at least).
+    """
+    return x
+```
+
 ## Integration with Neoformat
 
 If you are using [Neoformat](https://github.com/sbdchd/neoformat) in vim, you
