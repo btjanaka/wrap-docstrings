@@ -1,5 +1,7 @@
 """Tests for wrap_docstrings."""
 
+# wrap-docstrings: disable
+
 from wrap_docstrings import wrap_docstrings
 
 

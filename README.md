@@ -79,3 +79,11 @@ let g:neoformat_python_wrap_docstrings = {
       \ }
 let g:neoformat_enabled_python = ['wrap_docstrings'] " Or append wrap_docstrings to your current list of formatters.
 ```
+
+## Suppression
+
+To skip a file, add this comment somewhere in the file:
+
+```python
+# wrap-docstrings: disable
+```

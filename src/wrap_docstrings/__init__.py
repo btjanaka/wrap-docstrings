@@ -16,6 +16,10 @@ def wrap_docstrings(text: str, width: int, indent: int) -> str:
         width: Text width for wrapping the docstring.
         indent: Indent width for the code, e.g., 2 or 4 spaces.
     """
+    # Disable if this comment is in the file.
+    if "# wrap-docstrings: disable\n" in text:
+        return text
+
     lines = text.splitlines(keepends=True)
     final_lines = []
 
