@@ -3,11 +3,21 @@
 Currently limited to only wrapping the argument descriptions in Google-style
 docstrings.
 
-```bash
-# Install the tool globally.
-git clone https://github.com/btjanaka/wrap-docstrings
-uv tool install .
+## Installation
 
+```bash
+# Install from PyPI.
+uv tool install wrap-docstrings
+
+# Install from source.
+git clone https://github.com/btjanaka/wrap-docstrings
+cd wrap-docstrings
+uv tool install .
+```
+
+## Usage
+
+```bash
 # This command should now work:
 wrap-docstrings --help
 
