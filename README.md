@@ -98,3 +98,21 @@ To skip a file, add this comment somewhere in the file:
 ```python
 # wrap-docstrings: disable
 ```
+
+## Development
+
+To get set up:
+
+```bash
+uv sync --locked --all-extras --dev
+uv run pre-commit install
+```
+
+For publishing, this project uses the "trusted publishers" setup between GitHub
+Actions and PyPI; see
+[here](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/)
+and
+[here](https://docs.pypi.org/trusted-publishers/using-a-publisher/#github-actions)
+for more info. To publish a release, bump the version with `uv version` and
+commit the repo with the bumped version. Then, push a tag with the version
+number; the tag will trigger publishing.
