@@ -94,7 +94,7 @@ def main() -> None:
     )
     parser.add_argument(
         "path",
-        help="Input file, or '-' for stdin",
+        help="Input file or directory, or '-' to read from stdin and write to stdout",
     )
     parser.add_argument(
         "-w",
