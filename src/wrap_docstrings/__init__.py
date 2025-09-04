@@ -1,3 +1,5 @@
+"""Tool for wrapping docstrings."""
+
 import textwrap
 from pathlib import Path
 

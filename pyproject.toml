@@ -69,12 +69,6 @@ ignore = [
   "PLC0206",  # dict-index-missing-items
   "PLW2901",  # redefined-loop-name
   "D107",  # undocumented-public-init; we document the class rather than __init__
-  # These require docstrings everywhere, which is not as necessary for research code.
-  "D100",
-  "D101",
-  "D102",
-  "D103",
-  "D104",
   # These are pylint's errors about "too many X"
   "PLR0904",
   "PLR0911",
