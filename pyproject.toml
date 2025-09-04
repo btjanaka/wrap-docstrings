@@ -7,9 +7,7 @@ authors = [
     { name = "Bryon Tjanaka", email = "bryon.tjanaka@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = [
-    "fire>=0.7.1",
-]
+dependencies = []
 
 [project.scripts]
 wrap-docstrings = "wrap_docstrings:main"

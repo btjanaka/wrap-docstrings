@@ -1,9 +1,9 @@
 """Tool for wrapping docstrings."""
 
+import argparse
+import sys
 import textwrap
 from pathlib import Path
-
-import fire
 
 __all__ = ["wrap_docstrings"]
 
@@ -14,7 +14,7 @@ def wrap_docstrings(text: str, width: int, indent: int) -> str:
     Args:
         text: The input text.
         width: Text width for wrapping the docstring.
-        indent: Indent width for this file, e.g., 2 or 4 spaces.
+        indent: Indent width for the code, e.g., 2 or 4 spaces.
     """
     lines = text.splitlines(keepends=True)
     final_lines = []
@@ -87,25 +87,45 @@ def format_file(file: Path, width: int, indent: int) -> None:
     file.write_text(final_text)
 
 
-def wrap_docstrings_main(path: str, width: int = 88, indent: int = 4) -> None:
-    """Wraps args in Google-style docstrings.
-
-    Args:
-        path: Path to a directory or a single Python file.
-        width: Text width for wrapping the docstring.
-        indent: Indent width for this file, e.g., 2 or 4 spaces.
-    """
-    path = Path(path)
-    if path.is_dir():
-        for f in path.rglob("*.py"):
-            format_file(f, width, indent)
-        print(f"Formatted Python files in directory {path}")
-    elif path.is_file() and path.suffix == ".py":
-        format_file(path, width, indent)
-        print(f"Formatted {path}")
-    else:
-        print(f"Skipping since {path} is not a Python file.")
-
-
 def main() -> None:
-    fire.Fire(wrap_docstrings_main)
+    """Wraps args in Google-style docstrings."""
+    parser = argparse.ArgumentParser(
+        prog="wrap-docstrings", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    parser.add_argument(
+        "path",
+        help="Input file, or '-' for stdin",
+    )
+    parser.add_argument(
+        "-w",
+        "--width",
+        type=int,
+        default=88,
+        required=False,
+        help="Text width for wrapping the docstring.",
+    )
+    parser.add_argument(
+        "-i",
+        "--indent",
+        type=int,
+        default=4,
+        required=False,
+        help="Indent width for the code, e.g., 2 or 4 spaces.",
+    )
+    args = parser.parse_args()
+
+    if args.path == "-":
+        text = sys.stdin.read()
+        final_text = wrap_docstrings(text, width=args.width, indent=args.indent)
+        sys.stdout.write(final_text)
+    else:
+        path = Path(args.path)
+        if path.is_dir():
+            for f in path.rglob("*.py"):
+                format_file(f, args.width, args.indent)
+            print(f"Formatted Python files in directory {path}")
+        elif path.is_file() and path.suffix == ".py":
+            format_file(path, args.width, args.indent)
+            print(f"Formatted {path}")
+        else:
+            print(f"Skipping since {path} is not a Python file.")
